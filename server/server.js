@@ -29,11 +29,16 @@ app.use(session({
 // Massisve
 massive(CONNECTION_STRING).then(db => {
     app.set('db', db);
-    app.listen(PORT, () => console.log(`PORT ${PORT} is listening`));
-})
+    console.log('Connected to the Database');
+}).catch(err => console.log('Unable to connect to Database'));
 
 
 // Authenication Endpoints
 app.post('/auth/login', authCtrl.login);
+app.post('/auth/register', authCtrl.register);
+app.post('/auth/logout', authCtrl.logout);
 
 // patients Endpoints
+
+// listening for the port
+app.listen(PORT, () => console.log(`PORT ${PORT} is listening`));

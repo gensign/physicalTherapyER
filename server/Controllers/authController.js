@@ -21,6 +21,36 @@ const login = async(req, res) => {
 const register = async(req, res) => {
     console.log('Registering User');
     console.log('');
+    const db = req.app.get('db');
+    const { username, email, password } = req.body;
+    console.log('username": ', username);
+    console.log('');
+    const user = await db.find_user([username, password]);
+    console.log('user: ', user);
+    console.log('');
+    if (user.length > 0) {
+        console.log('User Found with Username');
+        console.log('');
+        return res.status(400).send({Register: false});
+    };
+    console.log('Username Not Found. Proceed with Registering');
+    console.log('');
+    const salt = bcrypt.genSaltSync(15);
+    const hash = bcrypt.hashSync(password, salt);
+    const newUser = await db.create_user([username, email, password]);
+    console.log('newUser: ', newUser);
+    console.log('');
+    db.insert_hash({ hash, user_id: newUser[0].user_id })
+        .then(() =>{
+            req.session.user = newUser[0];
+            console.log('session: ', req.session.user);
+            console.log('');
+            res.status(200).send({
+                message: 'Register Complete',
+                user: req.session.user,
+                loggedIn: true
+            });
+        }).catch(err => res.status(500).send({message: 'Failed to Register'}));
 };
 
 const logout = (req, res) => {
