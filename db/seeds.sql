@@ -21,3 +21,18 @@ CREATE TABLE mtg_credentials (
 );
 
 SELECT * FROM ptteaching_credentials;
+
+-- Patients table
+CREATE TABLE ptteaching_patients (
+	pt_id SERIAL PRIMARY KEY,
+  pt_code INTEGER,
+  user_id INTEGER REFERENCES ptteaching_users(user_id)
+);
+
+SELECT * FROM ptteaching_patients;
+
+-- dummy data
+INSERT INTO ptteaching_patients (pt_code, user_id)
+VALUES (1111, 1);
+
+-- 

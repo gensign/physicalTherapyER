@@ -36,7 +36,7 @@ massive(CONNECTION_STRING).then(db => {
 // Authenication Endpoints
 app.post('/auth/login', authCtrl.login);
 app.post('/auth/register', authCtrl.register);
-app.post('/auth/logout', authCtrl.logout);
+app.delete('/auth/logout', authCtrl.logout);
 
 // patients Endpoints
 
