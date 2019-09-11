@@ -20,22 +20,41 @@ class Register extends Component {
     };
 
     register = () => {
-
+        console.log('Registering');
+        console.log('');
+        console.log(this.state);
+        const { username, email, password } = this.state;
+        console.log('username: ', username);
+        axios.post('/auth/register', { username, email, password })
+            .then(res => {
+                console.log('username: ', username);
+                console.log('');
+                this.props.setUser({ username, email, password });
+                console.log('username: ', username);
+                console.log('');
+                this.props.history.push('/');
+            }).catch(err => {
+                alert('Username, Email, or Password in use');
+            });
     };
 
     cancel = () => {
-        
-    }
+        this.setState({
+            username: '',
+            password: ''
+        });
+        this.props.history.push('/');
+    };
 
     render() {
         return (
             <div>
                 <h1>Register</h1>
-                <span>Username: <input type='text' /></span>
-                <span>Email: <input type='text' /></span>
-                <span>Password: <input type='password' /></span>
-                <button>Register</button>
-                <button>Cancel</button>
+                <span>Username: <input type='text' onChange={(e) => {this.handleChange(e, 'username')}} /></span>
+                <span>Email: <input type='text' onChange={(e) => {this.handleChange(e, 'email')}} /></span>
+                <span>Password: <input type='password' onChange={(e) => {this.handleChange(e, 'password')}} /></span>
+                <button onClick={this.register}>Register</button>
+                <button onClick={this.cancel}>Cancel</button>
             </div>
         )
     };
