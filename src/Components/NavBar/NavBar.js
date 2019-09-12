@@ -19,10 +19,14 @@ export default class NavBar extends Component {
                         <li>Home</li>
                     </Link>
                     <li>Web Note</li>
-                    <li>Subscribe</li>
                     {/* toggle Patients on when user is logged in */}
                     <li>Patients</li>
-                    <li>Contact</li>
+                    <Link to='/subscribe'>
+                        <li>Subscribe</li>
+                    </Link>
+                    <Link to='/contact'>
+                        <li>Contact</li>
+                    </Link>
                     <div className='authenicationLinks'>
                         {/* need a trinary to toggle between Login/Register and logout */}
                         <Link to='/auth/login'>
