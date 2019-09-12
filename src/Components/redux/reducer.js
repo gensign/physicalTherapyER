@@ -1,12 +1,13 @@
 // setting inital state
 const initialState = {
     username: '',
-    password: ''
-
+    password: '',
+    loggedIn: false
 };
 
 // Action types
 const SET_USER = 'SET_USER';
+const LOGGEDIN = 'LOGGEDIN';
 
 // Action Builders
 export function setUser(user) {
@@ -15,6 +16,13 @@ export function setUser(user) {
         payload: user
     }
 };
+
+// export function loggedIN() {
+//     return {
+//         type: LOGGEDIN,
+//         payload:
+//     }
+// };
 
 // Reducer function
 
