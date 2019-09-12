@@ -18,7 +18,9 @@ export default class NavBar extends Component {
                     <Link to='/'>
                         <li>Home</li>
                     </Link>
-                    <li>Web Note</li>
+                    <Link to='/webnote/billing'>
+                        <li>Web Note</li>
+                    </Link>
                     {/* toggle Patients on when user is logged in */}
                     <li>Patients</li>
                     <Link to='/subscribe'>

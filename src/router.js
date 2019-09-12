@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 // import authenication components
-import Login from './Components/Login/Login';
-import Register from './Authenication/Register/Register';
+import Login from './Components/Authenication/Login/Login';
+import Register from './Components/Authenication/Register/Register';
 
 // import HomePage
 import HomePage from './Components/HomePage/HomePage'
@@ -12,6 +12,9 @@ import HomePage from './Components/HomePage/HomePage'
 import Contact from './Components/Contact/Contact';
 import Subscribe from './Components/Subscription/Subscription';
 
+// import webnote components
+import Billing from './Components/NoteForms/Billing/Billing';
+
 export default (
     < Switch >
         <Route exact path='/' component={HomePage} />
@@ -19,8 +22,8 @@ export default (
         <Route path='/auth/register' component={Register} />
         <Route path='/contact' component={Contact} />
         <Route path='/subscribe' component={Subscribe} />
-        {/* <Route path='' component={} />
-                    <Route path='' component={} />
+        <Route path='/webnote/billing' component={Billing} />
+                    {/* <Route path='' component={} />
                     <Route path='' component={} />
                     <Route path='' component={} />
                     <Route path='' component={} />  */}

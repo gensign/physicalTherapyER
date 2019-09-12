@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 
 // Import action builders
-import { setUser } from '../../Components/redux/reducer';
+import { setUser } from '../../redux/reducer';
 
 
 class Register extends Component {
