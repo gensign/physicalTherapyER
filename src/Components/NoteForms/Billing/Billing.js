@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 
 export default class Billing extends Component {
+    state = {
+
+    };
+    
     render() {
         return (
             <div>
-                <div className=''>
+                <h1>Billing</h1>
+                <div className='cptexamples'>
                     <li>1 Unit: 8-22 minutes</li>
                     <li>2 Units: 23-37 minutes</li>
                     <li>3 Units: 38-52 minutes</li>
@@ -57,6 +62,8 @@ export default class Billing extends Component {
                         <option>5</option>
                         <option>6</option>
                     </select>
+                    <button>Subjective</button>
+                    <button>Cancel</button>
                 </div>
             </div>
         )
