@@ -5,11 +5,13 @@ export default class NavBar extends Component {
     // need to toggle being logged in to change look of NavBar. 
     state = {
         loggedIn: false
-    }
+    };
 
     toggle = () => {
-
-    }
+        this.setState({
+            loggedIn: true
+        });
+    };
 
     render() {
         return (
@@ -18,11 +20,13 @@ export default class NavBar extends Component {
                     <Link to='/'>
                         <li>Home</li>
                     </Link>
-                    <Link to='/webnote/billing'>
+                    <Link to='/webnote/choose'>
                         <li>Web Note</li>
                     </Link>
                     {/* toggle Patients on when user is logged in */}
-                    <li>Patients</li>
+                    <Link to='/patients'>
+                        <li>Patients</li>
+                    </Link>
                     <Link to='/subscribe'>
                         <li>Subscribe</li>
                     </Link>
@@ -37,7 +41,9 @@ export default class NavBar extends Component {
                         <Link to='/auth/register'>
                             <li>Register</li>
                         </Link>
-                        <li>Logout</li>
+                        <Link to='/'>
+                            <li>Logout</li>
+                        </Link>
                     </div>
                 </nav>
             </div>

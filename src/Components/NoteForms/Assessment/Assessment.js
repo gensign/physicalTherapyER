@@ -5,7 +5,8 @@ export default class Assessment extends Component {
         return (
             <div>
                 <h1>Assessment</h1>
-                
+                <span>Assessment: </span>
+                <input type='type' />
             </div>
         )
     }
