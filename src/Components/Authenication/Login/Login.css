@@ -1,0 +1,34 @@
+* {
+    box-sizing: border-box;
+}
+
+.loginBody{
+    border: 1px solid red;
+    height: 70vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.loginInputs {
+    border: 1px solid green;
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    font-size: 2rem;
+}
+
+.loginButtons {
+    border: 1px solid blue;
+    width: 60vw;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    margin-top: 5vh;
+}
+

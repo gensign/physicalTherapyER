@@ -10,6 +10,7 @@ const session = require('express-session');
 const authCtrl = require('./Controllers/authController');
 const patientCtrl = require('./Controllers/patientsController');
 const noteCtrl = require('./Controllers/notesController');
+const billingCtrl = require('./Controllers/billingController');
 
 // import .env 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
@@ -47,9 +48,13 @@ app.get('/api/patients/:id', patientCtrl.getSinglept);
 app.post('/api/patients/:id', patientCtrl.addpt);
 app.delete('/api/patients/:id', patientCtrl.deletept);
 
+// billing endpoints
+app.get('/cptcodes', billingCtrl.getCPTCodes);
+
 // note endpoints
 
 // goal endpoints
+
 
 // listening for the port
 app.listen(PORT, () => console.log(`PORT ${PORT} is listening`));

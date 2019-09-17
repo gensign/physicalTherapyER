@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import './Login.css'
 
 // action builder
 import { setUser } from '../../redux/reducer';
@@ -43,14 +44,18 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className='loginBody'>
                 <h1>Login</h1>
-                <span>Username: </span>
-                <input type='text' onChange={(e) => this.handleChange(e, 'username')} />
-                <span>Password: </span>
-                <input type='password' onChange={(e) => this.handleChange(e, 'password')} />
-                <button onClick={this.login}>Login</button>
-                <button>Cancel</button>
+                <div className='loginInputs'>
+                    <span>Username: </span>
+                    <input type='text' onChange={(e) => this.handleChange(e, 'username')} />
+                    <span>Password: </span>
+                    <input type='password' onChange={(e) => this.handleChange(e, 'password')} />
+                </div>
+                <div className='loginButtons'>
+                    <button onClick={this.login}>Login</button>
+                    <button>Cancel</button>
+                </div>
             </div>
         )
     };
