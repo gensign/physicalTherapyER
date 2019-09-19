@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import './Register.css';
 import { connect } from 'react-redux';
 
 // Import action builders
@@ -10,7 +11,8 @@ class Register extends Component {
     state = {
         username: '',
         email: '',
-        password: ''
+        password: '',
+        loggedIn: false
     };
 
     handleChange = (e, key) => {
@@ -48,13 +50,17 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
+            <div className='registerBody'>
                 <h1>Register</h1>
-                <span>Username: <input type='text' onChange={(e) => {this.handleChange(e, 'username')}} /></span>
-                <span>Email: <input type='text' onChange={(e) => {this.handleChange(e, 'email')}} /></span>
-                <span>Password: <input type='password' onChange={(e) => {this.handleChange(e, 'password')}} /></span>
-                <button onClick={this.register}>Register</button>
-                <button onClick={this.cancel}>Cancel</button>
+                <div className='registerInputs'>
+                    <span>Username: <input type='text' onChange={(e) => { this.handleChange(e, 'username') }} /></span>
+                    <span>Email: <input type='text' onChange={(e) => { this.handleChange(e, 'email') }} /></span>
+                    <span>Password: <input type='password' onChange={(e) => { this.handleChange(e, 'password') }} /></span>
+                </div>
+                <div className='registerButtons'>
+                    <button onClick={this.register}>Register</button>
+                    <button onClick={this.cancel}>Cancel</button>
+                </div>
             </div>
         )
     };

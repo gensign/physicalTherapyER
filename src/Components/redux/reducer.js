@@ -17,12 +17,12 @@ export function setUser(user) {
     }
 };
 
-// export function loggedIN() {
-//     return {
-//         type: LOGGEDIN,
-//         payload:
-//     }
-// };
+export function loggedIN(loggin) {
+    return {
+        type: LOGGEDIN,
+        payload: loggin
+    }
+};
 
 // Reducer function
 

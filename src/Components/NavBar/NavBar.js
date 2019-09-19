@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './NavBar.css';
 
 export default class NavBar extends Component {
     // need to toggle being logged in to change look of NavBar. 
@@ -7,16 +9,17 @@ export default class NavBar extends Component {
         loggedIn: false
     };
 
-    toggle = () => {
-        this.setState({
-            loggedIn: true
+
+    logout = () => {
+        axios.delete('/auth/logout').then({
+            toggle: false
         });
     };
 
     render() {
         return (
-            <div>
-                <nav>
+            <div className='navBarBody'>
+                <nav className='links'>
                     <Link to='/'>
                         <li>Home</li>
                     </Link>
@@ -35,15 +38,20 @@ export default class NavBar extends Component {
                     </Link>
                     <div className='authenicationLinks'>
                         {/* need a trinary to toggle between Login/Register and logout */}
-                        <Link to='/auth/login'>
-                            <li>Login</li>
-                        </Link>
-                        <Link to='/auth/register'>
-                            <li>Register</li>
-                        </Link>
-                        <Link to='/'>
-                            <li>Logout</li>
-                        </Link>
+                        {this.state.toggle = false ?
+                            <Link to='/'>
+                                <li>Logout</li>
+                            </Link> :
+                            <div>
+                                <Link to='/auth/login'>
+                                    <li>Login</li>
+                                </Link>
+                                <Link to='/auth/register'>
+                                    <li>Register</li>
+                                </Link>
+                            </div>
+
+                        }
                     </div>
                 </nav>
             </div>

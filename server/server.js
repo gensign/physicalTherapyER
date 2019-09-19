@@ -45,7 +45,7 @@ app.delete('/auth/logout', authCtrl.logout);
 app.get('/api/patients', patientCtrl.getAllpt);
 app.get('/api/patients/:id', patientCtrl.getSinglept);
 // app.get('/api/patients/user/:id', patientCtrl.getUserspt);
-app.post('/api/patients/:id', patientCtrl.addpt);
+app.post('/api/patients', patientCtrl.addpt);
 app.delete('/api/patients/:id', patientCtrl.deletept);
 
 // billing endpoints
