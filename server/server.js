@@ -41,10 +41,21 @@ app.post('/auth/login', authCtrl.login);
 app.post('/auth/register', authCtrl.register);
 app.delete('/auth/logout', authCtrl.logout);
 
+// auth guard for api routes
+app.use((req, res, next)=> {
+    const {user} = req.session;
+    if (user) {
+        next()
+    } else {
+        res.status(401).send('Unauthorized');
+    }
+});
+
 // patients Endpoints
-app.get('/api/patients', patientCtrl.getAllpt);
+app.get('/api/patients', patientCtrl.getUserspt);
+// gets all patients requardless of owner
+// app.get('/api/patients', patientCtrl.getAllpt);
 app.get('/api/patients/:id', patientCtrl.getSinglept);
-// app.get('/api/patients/user/:id', patientCtrl.getUserspt);
 app.post('/api/patients', patientCtrl.addpt);
 app.delete('/api/patients/:id', patientCtrl.deletept);
 
@@ -54,11 +65,11 @@ app.get('/billing', billingCtrl.getBilling);
 app.post('/billing', billingCtrl.addBilling);
 
 // note endpoints
-app.get('/patient/notes', noteCtrl.getAllNotes);
-app.get('/patient/notes/:id', noteCtrl.getSingleNote);
-app.post('/patient/note', noteCtrl.addNote);
-app.put('/patient/note/:id', noteCtrl.updateNote);
-app.delete('/patient/note/:id', noteCtrl.deleteNote);
+app.get('/patient/:pid/notes', noteCtrl.getAllNotes);
+app.get('/patient/:pid/notes/:id', noteCtrl.getSingleNote);
+app.post('/patient/:pid/note', noteCtrl.addNote);
+app.put('/patient/:pid/note/:id', noteCtrl.updateNote);
+app.delete('/patient/:pid/note/:id', noteCtrl.deleteNote);
 
 // goal endpoints
 

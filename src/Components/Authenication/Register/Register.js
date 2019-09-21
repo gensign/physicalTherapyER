@@ -4,7 +4,9 @@ import './Register.css';
 import { connect } from 'react-redux';
 
 // Import action builders
-import { setUser } from '../../redux/reducer';
+import { userUpdateAction } from '../../redux/reducer';
+
+import { store } from '../../redux/store';
 
 
 class Register extends Component {
@@ -12,7 +14,7 @@ class Register extends Component {
         username: '',
         email: '',
         password: '',
-        loggedIn: false
+        authenticated: false
     };
 
     handleChange = (e, key) => {
@@ -31,7 +33,7 @@ class Register extends Component {
             .then(res => {
                 console.log('username: ', username);
                 console.log('');
-                this.props.setUser({ username, email, password });
+                store.dispatch(userUpdateAction({ username, loggedIn: false }));
                 console.log('username: ', username);
                 console.log('');
                 this.props.history.push('/');
@@ -66,4 +68,4 @@ class Register extends Component {
     };
 };
 
-export default connect(null, { setUser })(Register);
+export default connect(null)(Register);

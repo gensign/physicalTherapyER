@@ -9,10 +9,11 @@ export default class ChoosePatient extends Component {
 
     componentDidMount() {
         axios.get('/api/patients').then(res => {
+            console.log('res: ', res);
             this.setState({
                 patients: res.data
             });
-        });
+        }).catch(err => console.log('Not connecting', err));
     };
 
     cancel = () => {

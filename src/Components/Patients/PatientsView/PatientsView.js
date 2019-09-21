@@ -9,7 +9,7 @@ export default class PatientsView extends Component {
     componentDidMount = () => {
         axios.get('/api/patients').then(res => {
             this.setState({
-                patients: res.data.patients
+                patients: res.data
             });
         }).catch(err => alert('Could not connect to DB'));
     };
@@ -19,11 +19,27 @@ export default class PatientsView extends Component {
     };
 
     render() {
+        // const mappedPts = this.state.patients.map(el => {
+        //     return (
+        //         <li id={el.pt_id}>
+        //             {el.pt_code}
+        //         </li>
+        //     );
+        // });
         return (
             <div>
                 Patients
                 <button>Add Patient</button>
-               {this.state.patients}
+                <ul>
+                    {this.state.patients.map(el => {
+                        return (
+                            <li key={el.pt_id}>
+                            {el.pt_code}
+                        </li>  
+                        )
+                    })}
+                </ul>
+                {/* {this.state.patients[0].pt_code} */}
             </div>
         )
     }

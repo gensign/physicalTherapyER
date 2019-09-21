@@ -12,6 +12,7 @@ const login = async (req, res) => {
     console.log('user: ', user);
     console.log('');
     if (user.length > 0) {
+        req.session.user = user[0] 
         res.status(201).send({ loggedIn: true });
     } else {
         res.status(401).send({ loggedIn: false });
@@ -56,9 +57,10 @@ const register = async (req, res) => {
 const logout = (req, res) => {
     console.log('Logging Out');
     console.log('');
-    req.session = {};
+    req.session.destroy();
     console.log('session: ', req.session);
     console.log('');
+    res.status(200).send({});
 };
 
 module.exports = {

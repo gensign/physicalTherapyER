@@ -4,24 +4,27 @@ import axios from 'axios';
 import './NavBar.css';
 import { connect } from 'react-redux';
 
-import { loggedIN } from '../redux/reducer';
-
+import { store } from '../redux/store';
+import { userAuthAction } from '../redux/reducer';
 
 class NavBar extends Component {
     // need to toggle being logged in to change look of NavBar. 
-    constructor () {
+    constructor() {
         super();
 
         this.state = {
-            loggedin: false
+            authenticated: false
         };
+
+        store.subscribe(() => this.setState(store.getState()))
     };
 
 
     logout = () => {
-        axios.delete('/auth/logout').then({
-            loggedin: false
-        });
+        axios.delete('/auth/logout').then(res => {
+            store.dispatch(userAuthAction({ authenticated: false }))
+            this.props.history.push('/');
+        }).catch(err => console.log('logout not working', err));
     };
 
     render() {
@@ -46,7 +49,7 @@ class NavBar extends Component {
                     </Link>
                     <div className='authenicationLinks'>
                         {/* need a trinary to toggle between Login/Register and logout */}
-                        {!this.state.loggedin ?
+                        {!this.state.authenticated ?
                             (<div>
                                 <Link to='/auth/login'>
                                     <li>Login</li>
@@ -56,9 +59,7 @@ class NavBar extends Component {
                                 </Link>
                             </div>) :
                             (<div>
-                                <Link to='/'>
-                                    <li>Logout</li>
-                                </Link>
+                                <li onClick={this.logout}>Logout</li>
                             </div>)
 
                         }
@@ -68,4 +69,4 @@ class NavBar extends Component {
         )
     }
 }
-export default connect(null, { loggedIN })(NavBar)
+export default connect(null)(NavBar)

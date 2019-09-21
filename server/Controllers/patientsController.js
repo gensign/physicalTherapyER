@@ -27,10 +27,15 @@ const getUserspt = async (req, res) => {
     console.log('Getting Users patients');
     console.log('');
     const db = req.app.get('db');
-    const { user_id } = req.body;
+    const { user_id } = req.session.user;
+    console.log('session: ', req.session);
+    console.log('');
     console.log('user ID: ', user_id);
     console.log('');
-
+    const userPts = await db.find_pt_by_user([user_id]);
+    console.log('userPts: ', userPts);
+    console.log('');
+    res.status(200).send(userPts);
 };
 
 const addpt = (req, res) => {

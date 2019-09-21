@@ -1,26 +1,25 @@
 // setting inital state
 const initialState = {
     username: '',
-    password: '',
-    loggedIn: false
+    authenticated: false
 };
 
 // Action types
-const SET_USER = 'SET_USER';
-const LOGGEDIN = 'LOGGEDIN';
+const UPDATE_USER = 'UDPATE_USER';
+const AUTHENTICATE = 'AUTHENTICATE';
 
 // Action Builders
-export function setUser(user) {
+export function userUpdateAction(state) {
     return {
-        type: SET_USER,
-        payload: user
+        type: UPDATE_USER,
+        payload: state
     }
 };
 
-export function loggedIN(loggin) {
+export function userAuthAction(state) {
     return {
-        type: LOGGEDIN,
-        payload: loggin
+        type: AUTHENTICATE,
+        payload: state
     }
 };
 
@@ -28,9 +27,12 @@ export function loggedIN(loggin) {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case SET_USER:
-            const { username, password } = action.payload;
-            return { ...state, username, password };
+        case UPDATE_USER:
+            const { username } = action.payload;
+            return { ...state, username };
+        case AUTHENTICATE:
+            const { authenticated } = action.payload;
+            return { ...state, authenticated };
         default:
             return state
     };
