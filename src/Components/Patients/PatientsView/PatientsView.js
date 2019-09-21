@@ -15,7 +15,7 @@ export default class PatientsView extends Component {
     };
 
     addPt = () => {
-
+        axios.post('/api/patients').then().catch();
     };
 
     render() {

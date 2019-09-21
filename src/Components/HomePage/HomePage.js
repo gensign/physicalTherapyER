@@ -7,7 +7,6 @@ export default class HomePage extends Component {
             <div className='homePage'>
                 <div className='images'>
                     {/* Learn how to rotate through these pictures on a set timer */}
-                    <img id='image1' src='https://www.stanfordchildrens.org/content-public/images/carousel/sports-physical-therapy-2-stanford-childrens-400x315.jpg' alt='Physical Therapist on one knee treating a child with ACL tear' />
                     <img id='image2' src='https://www.masmedicalstaffing.com/wp-content/uploads/2017/12/physical-therapist-soap-notes-soap-stand-for.jpg' alt='Person hand with pen about to begin writting' />
                     <img id='image3' src='https://www.stlukesphysicaltherapy.com/getmedia/6e8fbd32-a370-4872-973e-731ee4f0f370/6456-Kutztown-PT-26-copy?width=800&height=533' alt='Woman completing External Rotation exercises on yoga ball' />
                 </div>

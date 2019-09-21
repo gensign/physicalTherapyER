@@ -26,9 +26,9 @@ export default class Contact extends Component {
         return (
             <div className='contactBody'>
                 <div className='contactInput'>
-                    <span>Sender's Email: <input type='text' onChange={(e) => { this.handleChange(e, 'senderEmail') }} /></span>
-                    <span>Sender's Email: <input type='text' onChange={(e) => { this.handleChange(e, 'subject') }} /></span>
-                    <span>Sender's Email: <input type='text' onChange={(e) => { this.handleChange(e, 'content') }} /></span>
+                    <form>Sender's Email: <input type='text' onChange={(e) => { this.handleChange(e, 'senderEmail') }} /></form>
+                    <form>Subject: <input type='text' onChange={(e) => { this.handleChange(e, 'subject') }} /></form>
+                    <form>Content: <input type='text' onChange={(e) => { this.handleChange(e, 'content') }} /></form>
                 </div>
                 <div className='contactButtons'>
                     <button>Send Email</button>

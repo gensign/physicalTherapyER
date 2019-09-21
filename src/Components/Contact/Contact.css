@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+.contactBody {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.contactInput {
+    border: 1px solid blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactButtons {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}

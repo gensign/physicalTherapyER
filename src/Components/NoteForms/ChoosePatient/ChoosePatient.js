@@ -3,7 +3,8 @@ import axios from 'axios';
 
 export default class ChoosePatient extends Component {
     state = {
-        patients: []
+        patients: [],
+        patientIndex: 0
     };
 
     componentDidMount() {
@@ -14,14 +15,23 @@ export default class ChoosePatient extends Component {
         });
     };
 
+    cancel = () => {
+        this.setState({
+            patients: []
+        });
+    };
+    
     render() {
         return (
             <div>
                 <h1>Choose Patient ID</h1>
+                {this.state.patients[this.state.patientIndex]}
                 <select>
                     {/* is not saving the array */}
                     <option></option>
                 </select>
+                <button>Billing</button>
+                <button onClick={this.cancel}>Cancel</button>
             </div>
         )
     }

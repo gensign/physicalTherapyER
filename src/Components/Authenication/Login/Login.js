@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import './Login.css'
+import './Login.css';
 
 // action builder
-import { setUser } from '../../redux/reducer';
+import { setUser, loggedIN } from '../../redux/reducer';
 
 class Login extends Component {
-    state = {
-        username: '',
-        password: ''
+    constructor() {
+        super()
+        this.state = {
+            username: '',
+            password: '',
+            loggedin: false
+        };
     };
+
 
     handleChange = (e, key) => {
         this.setState({
@@ -23,11 +28,16 @@ class Login extends Component {
         console.log('');
         console.log('state: ', this.state);
         console.log('');
-        const { username, password } = this.state;
+        const { username, password, loggedin } = this.state;
         console.log('username: ', username);
-        axios.post('/auth/login', { username, password })
+        axios.post('/auth/login', { username, password, loggedin })
             .then(res => {
                 this.props.setUser({ username, password });
+                this.setState({
+                    loggedIn: true
+                });
+                console.log('Logged In: ', this.state.loggedin);
+                this.props.loggedIN(loggedIN);
                 this.props.history.push('/');
             }).catch(err => {
                 alert('Incorrect Username or Password');
@@ -61,4 +71,4 @@ class Login extends Component {
     };
 }
 
-export default connect(null, { setUser })(Login)
+export default connect(null, { setUser, loggedIN })(Login)

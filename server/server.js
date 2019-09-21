@@ -50,8 +50,15 @@ app.delete('/api/patients/:id', patientCtrl.deletept);
 
 // billing endpoints
 app.get('/cptcodes', billingCtrl.getCPTCodes);
+app.get('/billing', billingCtrl.getBilling);
+app.post('/billing', billingCtrl.addBilling);
 
 // note endpoints
+app.get('/patient/notes', noteCtrl.getAllNotes);
+app.get('/patient/notes/:id', noteCtrl.getSingleNote);
+app.post('/patient/note', noteCtrl.addNote);
+app.put('/patient/note/:id', noteCtrl.updateNote);
+app.delete('/patient/note/:id', noteCtrl.deleteNote);
 
 // goal endpoints
 

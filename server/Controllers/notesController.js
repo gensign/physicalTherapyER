@@ -18,9 +18,15 @@ const updateNote = async(req, res) => {
     console.log('');
 };
 
+const deleteNote = async(req, res) => {
+    console.log('Deleting Note');
+    console.log('');
+}
+
 module.exports = {
     getAllNotes,
     getSingleNote,
     addNote,
-    updateNote
+    updateNote,
+    deleteNote
 };
