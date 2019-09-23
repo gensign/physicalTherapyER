@@ -1,10 +1,20 @@
 import React, { Component } from 'react'
+import axios from 'axios';
+import {store} from '../../redux/store';
 
 export default class Plan extends Component {
-    state = {
+    constructor () {
+        super()
+        this.state = {
 
+        };
+        store.subscribe(() => this.setState({ pid: store.getState().choosenPt}));
     };
-    
+
+    componentDidMount() {
+        this.setState({ pid: store.getState().choosenPt });
+    };
+
     render() {
         return (
             <div>

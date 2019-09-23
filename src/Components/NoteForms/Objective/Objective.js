@@ -1,20 +1,32 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
+import store from '../../redux/store';
 
 export default class Objective extends Component {
-    state = {
+    constructor() {
+        super()
+        this.state = {
 
+        };
+        store.subscribe(() => this.setState({ pid: store.getState().choosenPt }));
     };
 
-    handleChange = () => {
+    componentDidMount() {
+        this.setState({ pid: store.getState().choosenPt });
+    };
 
+    handleChange = (e, key) => {
+        this.setState({
+            [key]: e.target.value
+        });
     };
 
     cancel = () => {
 
     };
 
-    next = () => {
-
+    submit = () => {
+        axios.post().then().catch(err => alert('Unable to connect to Database'))
     };
 
     render() {
@@ -22,15 +34,22 @@ export default class Objective extends Component {
             <div>
                 <h1>Objective</h1>
                 <span>ROM: </span>
-                <input type='text' placeholder='location' />
-                <input type='number' placeholder='degrees' />
-                <input type='text' placeholder='movement' />
+                <input type='text'
+                    placeholder='location' />
+                <input type='number'
+                    placeholder='degrees' />
+                <input type='text'
+                    placeholder='movement' />
                 <span>Strength: </span>
-                <input type='text' placeholder='location' />
-                <input type='text' placeholder='level' />
-                <input type='text' placeholder='location' />
+                <input type='text'
+                    placeholder='location' />
+                <input type='text'
+                    placeholder='level' />
+                <input type='text'
+                    placeholder='location' />
                 <span>Coordination: </span>
-                <input type='text' placeholder='Location' />
+                <input type='text'
+                    placeholder='Location' />
                 <select>
                     <option></option>
                     <option>Not Impaired</option>
@@ -45,7 +64,8 @@ export default class Objective extends Component {
                     <option>Moderate</option>
                     <option>Severe</option>
                 </select>
-                <input type='text' placeholder='location' />
+                <input type='text'
+                    placeholder='location' />
                 <span>Ther Ex: </span>
                 <input type='text' />
                 <span>Ther Act: </span>

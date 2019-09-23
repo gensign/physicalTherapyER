@@ -1,15 +1,44 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import store from '../../redux/store';
 
 export default class Subjective extends Component {
-    state = {
+    constructor() {
+        super()
 
+        this.state = {
+            painInput: 0,
+            moodInput: '',
+            orientationInput: '',
+            additionalInfoInput: ''
+        };
+        store.subscribe(() => this.setState({ pid: store.getState().choosenPt}));
     };
+
+    componentDidMount() {
+        this.setState({ pid: store.getState().choosenPt });
+    };
+
+    handleChange = (e, key) => {
+        this.setState({
+            [key]: e.target.value
+        });
+    };
+
+    submit = () => {
+        console.log('submitting Subjective');
+        console.log('');
+        axios.post('').then(res => {
+
+        }).catch(err => alert('Unable to connect to DataBase'));
+    };
+
     render() {
         return (
             <div>
                 <h1>Subjective</h1>
                 <span>Pain: </span>
-                <select>
+                <select onChange={(e) => this.handleChange(e, 'painInput')}>
                     <option></option>
                     <option>0</option>
                     <option>1</option>
@@ -24,9 +53,11 @@ export default class Subjective extends Component {
                     <option>10</option>
                 </select>
                 <span>Mood: </span>
-                <input type='text' />
+                <input type='text'
+                    onChange={(e) => this.handleChange(e, 'moodInput')}
+                />
                 <span>Orientation: </span>
-                <select>
+                <select onChange={(e) => this.handleChange(e, 'orientationInput')}>
                     <option></option>
                     <option>Time</option>
                     <option>Place</option>
@@ -35,7 +66,11 @@ export default class Subjective extends Component {
                     <option>None</option>
                 </select>
                 <span>Additional information: </span>
-                <input type='text' />
+                <input type='text'
+                    onChange={(e) => this.handleChange(e, 'additionalInfoInput')}
+                />
+                <button>Objective</button>
+                <button>Cancel</button>
             </div>
         )
     };
