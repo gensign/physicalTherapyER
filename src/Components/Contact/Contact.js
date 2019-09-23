@@ -25,11 +25,11 @@ export default class Contact extends Component {
     render() {
         return (
             <div className='contactBody'>
-                <div className='contactInput'>
+                <form className='contactInput'>
                     <form>Sender's Email: <input type='text' onChange={(e) => { this.handleChange(e, 'senderEmail') }} /></form>
                     <form>Subject: <input type='text' onChange={(e) => { this.handleChange(e, 'subject') }} /></form>
                     <form>Content: <input type='text' onChange={(e) => { this.handleChange(e, 'content') }} /></form>
-                </div>
+                </form>
                 <div className='contactButtons'>
                     <button>Send Email</button>
                     <button onClick={this.cancel}>Cancel</button>

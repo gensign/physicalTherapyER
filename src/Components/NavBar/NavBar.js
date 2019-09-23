@@ -37,10 +37,10 @@ class NavBar extends Component {
                     <Link to='/webnote/choose'>
                         <li>Web Note</li>
                     </Link>
-                    {/* toggle Patients on when user is logged in */}
-                    <Link to='/patients'>
+                    {/* toggle Patients on when user is logged in. Get working for portfolio */}
+                    {/* <Link to='/patients'>
                         <li>Patients</li>
-                    </Link>
+                    </Link> */}
                     <Link to='/subscribe'>
                         <li>Subscribe</li>
                     </Link>

@@ -40,6 +40,7 @@ massive(CONNECTION_STRING).then(db => {
 app.post('/auth/login', authCtrl.login);
 app.post('/auth/register', authCtrl.register);
 app.delete('/auth/logout', authCtrl.logout);
+app.put('/auth/update/:id', authCtrl.updateUserName);
 
 // auth guard for api routes
 app.use((req, res, next)=> {
@@ -66,12 +67,12 @@ app.post('/patient/:pid/billing', billingCtrl.addBilling);
 
 // note endpoints
 app.get('/patient/:pid/notes', noteCtrl.getAllNotes);
-app.get('/patient/:pid/notes/:id', noteCtrl.getSingleNote);
+app.get('/patient/:pid/note/:id', noteCtrl.getSingleNote);
 app.post('/patient/:pid/note', noteCtrl.addNote);
 app.put('/patient/:pid/note/:id', noteCtrl.updateNote);
 app.delete('/patient/:pid/note/:id', noteCtrl.deleteNote);
 
-// goal endpoints
+// goal endpoints when able 
 
 
 // listening for the port

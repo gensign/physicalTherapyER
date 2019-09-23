@@ -57,6 +57,10 @@ const deletept = async (req, res) => {
     const { pt_id } = req.params;
     console.log('pt_id: ', pt_id);
     console.log('');
+    const deletept = db.delete_pt([pt_id]);
+    console.log('deletept: ', deletept);
+    console.log('');
+    res.sendStatus(200);
 };
 
 module.exports = {

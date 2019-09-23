@@ -12,7 +12,7 @@ const login = async (req, res) => {
     console.log('user: ', user);
     console.log('');
     if (user.length > 0) {
-        req.session.user = user[0] 
+        req.session.user = user[0]
         res.status(201).send({ loggedIn: true });
     } else {
         res.status(401).send({ loggedIn: false });
@@ -63,8 +63,25 @@ const logout = (req, res) => {
     res.status(200).send({});
 };
 
+const updateUserName = async (req, res) => {
+    console.log('Updating User');
+    console.log('');
+    const db = req.app.get('db');
+    const { id } = req.params;
+    console.log('id: ', id);
+    console.log('');
+    const { username, email } = req.body;
+    console.log('username: ', username);
+    console.log('');
+    const updateUser = await db.update_user([username, email, id]);
+    console.log('updateUser: ', updateUser);
+    console.log('');
+    res.status(200).send(updateUser);
+};
+
 module.exports = {
     login,
     register,
-    logout
+    logout,
+    updateUserName
 };

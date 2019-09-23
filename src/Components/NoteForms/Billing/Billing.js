@@ -71,22 +71,6 @@ export default class Billing extends Component {
                             )
                         })}
                     </select>
-                    {/* work on if able */}
-                    {/* {!toggle ?
-                        <div>
-                            <select>
-                                {this.state.cptCodes.map(el => {
-                                    return (
-                                        <option key={el.cpt_code}>
-                                            {el.cpt_type}
-                                        </option>
-                                    )
-                                })}
-                            </select>
-
-                        </div> : 
-                    } */}
-                    {/* <button onClick={this.toggle}>Add Addtional CPT codes</button> */}
                     <span>Units: </span>
                     <select onChange={(e) => this.handleChange(e, 'units')}>
                         <option></option>

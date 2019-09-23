@@ -22,9 +22,9 @@ import Plan from './Components/NoteForms/Plan/Plan';
 import SaveNote from './Components/NoteForms/SaveNote/SaveNote';
 
 // import Patients components
-import PatientsView from './Components/Patients/PatientsView/PatientsView';
-import PatientNotes from './Components/Patients/PatientNotes/PatientNotes';
-import PatientGoals from './Components/Patients/PatientGoals/PatientGoals';
+// import PatientsView from './Components/Patients/PatientsView/PatientsView';
+// import PatientNotes from './Components/Patients/PatientNotes/PatientNotes';
+// import PatientGoals from './Components/Patients/PatientGoals/PatientGoals';
 
 export default (
     < Switch >
@@ -40,9 +40,10 @@ export default (
         <Route path='/webnote/assessment' component={Assessment} />
         <Route path='/webnote/plan' component={Plan} />
         <Route path='/webnote/savenote' component={SaveNote} />
+        {/* Disabled until able to get ready for portfolio
         <Route path='/patients' component={PatientsView} />
         <Route path='/patients/notes' component={PatientNotes} />
-        <Route path='/patients/goals' component={PatientGoals} />
+        <Route path='/patients/goals' component={PatientGoals} /> */}
     </Switch >
 )
 

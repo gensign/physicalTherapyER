@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import store from '../../redux/store';
+import { subjectiveUpdateAction } from '../../redux/reducer';
 
 export default class Subjective extends Component {
     constructor() {
@@ -28,9 +29,11 @@ export default class Subjective extends Component {
     submit = () => {
         console.log('submitting Subjective');
         console.log('');
-        axios.post('').then(res => {
-
-        }).catch(err => alert('Unable to connect to DataBase'));
+        const subjective = this.state
+        console.log('subjective: ', subjective);
+        console.log('');
+        store.dispatch(subjectiveUpdateAction(subjective));
+        this.props.history.push('/webnote/objective');
     };
 
     render() {
@@ -69,7 +72,7 @@ export default class Subjective extends Component {
                 <input type='text'
                     onChange={(e) => this.handleChange(e, 'additionalInfoInput')}
                 />
-                <button>Objective</button>
+                <button onClick={this.submit}>Objective</button>
                 <button>Cancel</button>
             </div>
         )
