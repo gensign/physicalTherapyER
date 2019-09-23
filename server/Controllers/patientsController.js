@@ -1,3 +1,4 @@
+// testing purposes only to entire database
 const getAllpt = async (req, res) => {
     console.log('Getting All pt');
     console.log('');
@@ -8,7 +9,6 @@ const getAllpt = async (req, res) => {
     res.status(200).send(pts);
 };
 
-// currently not working
 const getSinglept = async (req, res) => {
     console.log('Getting Single Pt');
     console.log('');
@@ -22,7 +22,6 @@ const getSinglept = async (req, res) => {
     res.status(200).send(singlePt);
 };
 
-// currently not working
 const getUserspt = async (req, res) => {
     console.log('Getting Users patients');
     console.log('');

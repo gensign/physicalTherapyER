@@ -19,13 +19,6 @@ export default class PatientsView extends Component {
     };
 
     render() {
-        // const mappedPts = this.state.patients.map(el => {
-        //     return (
-        //         <li id={el.pt_id}>
-        //             {el.pt_code}
-        //         </li>
-        //     );
-        // });
         return (
             <div>
                 Patients

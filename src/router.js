@@ -43,10 +43,6 @@ export default (
         <Route path='/patients' component={PatientsView} />
         <Route path='/patients/notes' component={PatientNotes} />
         <Route path='/patients/goals' component={PatientGoals} />
-        {/* <Route path='' component={} />
-        <Route path='' component={} />
-        <Route path='' component={} />
-        <Route path='' component={} /> */}
     </Switch >
 )
 
