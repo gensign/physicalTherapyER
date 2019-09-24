@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import './Contact.css';
+// import ReactQuill from 'react-quill';
+// import 'react-quill/dist/quill.snow.css';
 
 class Contact extends Component {
     constructor() {
@@ -10,7 +11,6 @@ class Contact extends Component {
           email: '',
           title: '',
           message: '',
-          image:''
         }
       }
     
@@ -27,13 +27,12 @@ class Contact extends Component {
             email: '',
             title: '',
             message: '',
-            image:''
           })
         })
       }
     
       render() {
-        const { name, email, message, title,image } = this.state
+        const { name, email, message, title } = this.state
         return (
           <div style={styles.body}>
             <div style={styles.form}>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
+import './Subscription.css';
 
 class Subscription extends Component {
     constructor() {
@@ -34,35 +35,42 @@ class Subscription extends Component {
         // console.log(typeof this.state.amount)
 
         return (
-            <div>
-                <div>
-                    <h1>Subscribe For Additional Features</h1>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
-                    <StripeCheckout
-                        name='CLass' //header
-                        image={imageUrl}
-                        description='This is stuff going beneath the header' //subtitle - beneath header
-                        stripeKey={process.env.REACT_APP_STRIPE_KEY} //public key not secret key
-                        token={this.onToken} //fires the call back
-                        amount={this.state.amount} //this will be in cents
-                        currency="USD"
-                        // image={imageUrl} // the pop-in header image (default none)
-                        // ComponentClass="div" //initial default button styling on block scope (defaults to span)
-                        panelLabel="Submit Payment" //text on the submit button
-                        locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
-                        opened={this.onOpened} //fires cb when stripe is opened
-                        closed={this.onClosed} //fires cb when stripe is closed
-                        allowRememberMe // "Remember Me" option (default true)
-                        billingAddress={false}
-                        // shippingAddress //you can collect their address
-                        zipCode={false}
-                    >
-                        {/* <button>Checkout</button> */}
-                    </StripeCheckout>
-                    <input value={this.state.amount}
-                        type='number'
-                        onChange={e => this.setState({ amount: +e.target.value })} />
+            <div className='subscribeWrapper'>
+                <div className='subscribeBody'>
+                    <div className='subscribeTitle'>
+                        <h1>Subscribe For Additional Features</h1>
+                    </div>
+                    <h3>Coming Soon: Teaching can View Notes and Give Feedback</h3>
+                    <h4>1 week: Free</h4>
+                    <h4>1 month: $3.99</h4>
+                    <h4>6 months: $6.99</h4>
+                    <h4>1 year: $10.99</h4>
+                    <div className='stipeWraper' style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }} className>
+                        <StripeCheckout
+                            name='CLass' //header
+                            image={imageUrl}
+                            description='This is stuff going beneath the header' //subtitle - beneath header
+                            stripeKey={process.env.REACT_APP_STRIPE_KEY} //public key not secret key
+                            token={this.onToken} //fires the call back
+                            amount={this.state.amount} //this will be in cents
+                            currency="USD"
+                            // image={imageUrl} // the pop-in header image (default none)
+                            // ComponentClass="div" //initial default button styling on block scope (defaults to span)
+                            panelLabel="Submit Payment" //text on the submit button
+                            locale="en" //locale or language (e.g. en=english, fr=french, zh=chinese)
+                            opened={this.onOpened} //fires cb when stripe is opened
+                            closed={this.onClosed} //fires cb when stripe is closed
+                            allowRememberMe // "Remember Me" option (default true)
+                            billingAddress={false}
+                            // shippingAddress //you can collect their address
+                            zipCode={false}
+                        >
+                            {/* <button>Checkout</button> */}
+                        </StripeCheckout>
+                        <input value={this.state.amount}
+                            type='number'
+                            onChange={e => this.setState({ amount: +e.target.value })} />
+                    </div>
                 </div>
             </div>
         )

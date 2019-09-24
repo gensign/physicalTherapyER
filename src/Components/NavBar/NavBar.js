@@ -41,9 +41,9 @@ class NavBar extends Component {
                         <li>Web Note</li>
                     </Link>
                     {/* toggle Patients on when user is logged in. Get working for portfolio */}
-                    {/* <Link to='/patients'>
+                    <Link to='/patients'>
                         <li>Patients</li>
-                    </Link> */}
+                    </Link>
                     <Link to='/subscribe'>
                         <li>Subscribe</li>
                     </Link>

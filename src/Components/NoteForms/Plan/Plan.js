@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { store } from '../../redux/store';
 import { connect } from 'react-redux';
 import { planUpdateAction } from '../../redux/reducer';
 
@@ -45,13 +44,13 @@ class Plan extends Component {
                     value={this.state.diagnosisInput}
                     onChange={(e) => this.handleChange(e, 'diagnosisInput')} />
                 <span>Number of Visits a Week</span>
-                <input type='number'
-                    value={this.state.planOfCareInput}
-                    onChange={(e) => this.handleChange(e, 'planOfCareInput')} />
-                <span>Plan of Care</span>
                 <input type='text'
                     value={this.state.numberOfVisitsInput}
                     onChange={(e) => this.handleChange(e, 'numberOfVisitsInput')} />
+                <span>Plan of Care</span>
+                <input type='number'
+                    value={this.state.planOfCareInput}
+                    onChange={(e) => this.handleChange(e, 'planOfCareInput')} />
                 <button onClick={this.goToSaveNote}>View Note</button>
                 <button onClick={this.previous}>Previous</button>
             </div>

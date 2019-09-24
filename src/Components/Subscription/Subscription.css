@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+.subscribeWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.subscribeBody {
+    background: whitesmoke;
+    height: 70vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscribeTitle{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.stipeWraper {
+    display: flex; 
+    flex-direction: column;
+    align-items: 'center';
+    margin-top: '50px';
+}

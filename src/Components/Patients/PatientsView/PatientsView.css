@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+}
+
+.patientBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.patientsWrapper {
+    background: whitesmoke;
+    height: 70vh;
+    width: 70vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.patientsTitle {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    font-size: 2rem;
+}
+
+.patientList li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.patientInput {
+    display: flex;
+    justify-content: center;
+}
+
+.patientInput input {
+    background: lightgray;
+}

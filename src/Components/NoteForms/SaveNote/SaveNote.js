@@ -13,15 +13,11 @@ class SaveNote extends Component {
         assessment: {},
         plan: {}
     };
-
-    constructor() {
-        super()
-    };
-
+    
     submit = () => {
         console.log('Submitting Note')
         const { choosenPt, subjective, objective, assessment, plan } = this.props
-        axios.post(`/patient/${choosenPt}/note`, {subjective, objective, assessment, plan}).then(res => {
+        axios.post(`/patient/${choosenPt}/note`, { subjective, objective, assessment, plan }).then(res => {
             console.log('response: ', res.data);
             this.props.history.push('/');
         }).catch(err => {
@@ -79,12 +75,88 @@ class SaveNote extends Component {
                         <button onClick={this.editSubjective}>Edit</button>
                     </div>
                     <div className="objectiveDisplay boxDisplay">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>ROM: </td>
+                                    <td>{this.props.objective.romLocation}</td>
+                                    <td>{this.props.objective.romDegress}</td>
+                                    <td>{this.props.objective.romDegress}</td>
+                                </tr>
+                                <tr>
+                                    <td>Strength: </td>
+                                    <td>{this.props.objective.strengthLocation}</td>
+                                    <td>{this.props.objective.strengthLevel}</td>
+                                    <td>{this.props.objective.strengthMovement}</td>
+                                </tr>
+                                <tr>
+                                    <td>Coordination: </td>
+                                    <td>{this.props.objective.coordinationLocation}</td>
+                                    <td>{this.props.objective.coordinationSelect}</td>
+                                </tr>
+                                <tr>
+                                    <td>Sensation: </td>
+                                    <td>{this.props.objective.sensationLocation}</td>
+                                    <td>{this.props.objective.sensationselect}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ther Ex: </td>
+                                    <td>{this.props.objective.therExInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Ther Act: </td>
+                                    <td>{this.props.objective.therActInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Neuro Re-Ed: </td>
+                                    <td>{this.props.objective.neruoReEdInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Gait: </td>
+                                    <td>{this.props.objective.gaitInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Stairs: </td><td>{this.props.objective.stairsInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Transfers: </td>
+                                    <td>{this.props.objective.transfersAssistLevel}</td>
+                                    <td>{this.props.objective.transfersCues}</td>
+                                    <td>{this.props.objective.transfersAssitDevice}</td>
+                                    <td>{this.props.objective.transfersType}</td>
+                                </tr>
+                                <tr>
+                                    <td>Additional Info: </td><td>{this.props.objective.additionalInfoInput}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <button onClick={this.editObjective}>Edit</button>
                     </div>
                     <div className="assessmentDisplay boxDisplay">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>Assessment: </td><td>{this.props.assessment.assessmentInput}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <button onClick={this.editAssessment}>Edit</button>
                     </div>
                     <div className="planDisplay boxDisplay">
+                    <table>
+                            <tbody>
+                                <tr>
+                                    <td>Diagonsis: </td><td>{this.props.plan.diagnosisInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Plan Of Care: </td><td>{this.props.plan.planOfCareInput}</td>
+                                </tr>
+                                <tr>
+                                    <td>Number Of Visit per Week: </td><td>{this.props.plan.numberOfVisitsInput}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <button onClick={this.editPlan}>Edit</button>
                     </div>
                 </div>

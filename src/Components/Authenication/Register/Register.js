@@ -53,13 +53,18 @@ class Register extends Component {
     render() {
         return (
             <div className='registerBody'>
-                <div className='registerLogo'>
-                    <h1>Register</h1>
-                </div>
-                <div className='registerInputs'>
-                    <span>Username: <input type='text' onChange={(e) => { this.handleChange(e, 'username') }} /></span>
-                    <span>Email: <input type='text' onChange={(e) => { this.handleChange(e, 'email') }} /></span>
-                    <span>Password: <input type='password' onChange={(e) => { this.handleChange(e, 'password') }} /></span>
+                <div>
+                    <div className='registerLogo'>
+                        <h1>Register</h1>
+                    </div>
+                    <div className='registerInputs'>
+                        <span>Username: </span>
+                        <input type='text' onChange={(e) => { this.handleChange(e, 'username') }} />
+                        <span>Email: </span>
+                        <input type='text' onChange={(e) => { this.handleChange(e, 'email') }} />
+                        <span>Password: </span>
+                        <input type='password' onChange={(e) => { this.handleChange(e, 'password') }} />
+                    </div>
                 </div>
                 <div className='registerButtons'>
                     <button onClick={this.register}>Register</button>

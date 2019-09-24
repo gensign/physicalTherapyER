@@ -1,3 +1,35 @@
 * {
     box-sizing: border-box;
 }
+
+.objectiveBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.objectiveWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.objectiveTitle{
+    font-size: 2rem; 
+    display: flex;
+    justify-content: center;
+}
+
+.objectiveInput{
+    font-size: 2rem;
+}
+
+.objectiveInput input {
+    width: 20vw;
+}
+
+.objectiveButtons{
+    display: flex;
+    justify-content: space-evenly;
+}

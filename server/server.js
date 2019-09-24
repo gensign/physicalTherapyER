@@ -37,13 +37,16 @@ massive(CONNECTION_STRING).then(db => {
     console.log('Connected to the Database');
 }).catch(err => console.log('Unable to connect to Database'));
 
+// Stribe Back end
+app.post('/api/payment', stripeCtrl.pay)
+
+// nodemailer Endpoints
+app.post('/api/email', nodeMailCtrl.email)
 
 // Authenication Endpoints
 app.post('/auth/login', authCtrl.login);
 app.post('/auth/register', authCtrl.register);
 app.delete('/auth/logout', authCtrl.logout);
-app.put('/auth/update/:id', authCtrl.updateUserName);
-// app.get('/auth/user/:id', authCtrl.getUser);
 
 // auth guard for api routes
 app.use((req, res, next)=> {
@@ -54,6 +57,8 @@ app.use((req, res, next)=> {
         res.status(401).send('Unauthorized');
     }
 });
+
+app.put('/auth/update', authCtrl.updateUserName);
 
 // patients Endpoints
 app.get('/api/patients', patientCtrl.getUserspt);
@@ -74,13 +79,6 @@ app.get('/patient/:pid/note/:id', noteCtrl.getSingleNote);
 app.post('/patient/:pid/note', noteCtrl.addNote);
 app.put('/patient/:pid/note/:id', noteCtrl.updateNote);
 app.delete('/patient/:pid/note/:id', noteCtrl.deleteNote);
-
-
-// Stribe Back end
-app.post('/api/payment', stripeCtrl.pay)
-
-// nodemailer Endpoints
-app.post('/api/email', nodeMailCtrl.email)
 
 
 // goal endpoints when able 
