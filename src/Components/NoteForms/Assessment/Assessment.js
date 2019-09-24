@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { assessmentUpdateAction } from '../../redux/reducer';
+import './Assessment.css';
 
 class Assessment extends Component {
 
@@ -35,16 +36,22 @@ class Assessment extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Assessment</h1>
-                <div className='Assesment'>
-                    <span>Assessment: </span>
-                    <input type='text'
-                        value={this.state.assessmentInput}
-                        onChange={(e) => this.handleChange(e, 'assessmentInput')} />
+            <div className='assessmentBody'>
+                <div className='assessmentWrapper'>
+                    <div className='assessmentTitle'>
+                        <h1>Assessment</h1>
+                    </div>
+                    <div className='assessmentInput'>
+                        <span>Assessment: </span>
+                        <input type='text'
+                            value={this.state.assessmentInput}
+                            onChange={(e) => this.handleChange(e, 'assessmentInput')} />
+                    </div>
+                    <div className='assessmentButtons'>
+                        <button onClick={this.previous}>Previous</button>
+                        <button onClick={this.goToPlan}>Plan</button>
+                    </div>
                 </div>
-                <button onClick={this.goToPlan}>Plan</button>
-                <button onClick={this.previous}>Previous</button>
             </div>
         )
     }

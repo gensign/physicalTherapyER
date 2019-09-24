@@ -1,3 +1,37 @@
 * {
     box-sizing: border-box;
 }
+
+.planBody{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.planWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.planTitle{
+    font-size: 2rem; 
+    display: flex;
+    justify-content: center;
+}
+
+.planInput{
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+}
+
+.planInput input {
+    width: 20vw;
+}
+
+.planButton{
+    display: flex;
+    justify-content: space-evenly;
+}

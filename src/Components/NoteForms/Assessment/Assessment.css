@@ -1,3 +1,35 @@
 * {
     box-sizing: border-box;
 }
+
+.assessmentBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.assessmentWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.assessmentTitle{
+    font-size: 2rem; 
+    display: flex;
+    justify-content: center;
+}
+
+.assessmentInput{
+    font-size: 2rem;
+}
+
+.assessmentInput input {
+    width: 20vw;
+}
+
+.assessmentButtons{
+    display: flex;
+    justify-content: space-evenly;
+}

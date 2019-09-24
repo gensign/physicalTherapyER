@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { planUpdateAction } from '../../redux/reducer';
+import './Plan.css';
 
 class Plan extends Component {
 
@@ -37,22 +38,30 @@ class Plan extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Plan</h1>
-                <span>Diagnosis</span>
-                <input type='text'
-                    value={this.state.diagnosisInput}
-                    onChange={(e) => this.handleChange(e, 'diagnosisInput')} />
-                <span>Number of Visits a Week</span>
-                <input type='text'
-                    value={this.state.numberOfVisitsInput}
-                    onChange={(e) => this.handleChange(e, 'numberOfVisitsInput')} />
-                <span>Plan of Care</span>
-                <input type='number'
-                    value={this.state.planOfCareInput}
-                    onChange={(e) => this.handleChange(e, 'planOfCareInput')} />
-                <button onClick={this.goToSaveNote}>View Note</button>
-                <button onClick={this.previous}>Previous</button>
+            <div className='planBody'>
+                <div className='planWrapper'>
+                    <div className='planTitle'>
+                        <h1>Plan</h1>
+                    </div>
+                    <div className='planInput'>
+                        <span>Diagnosis</span>
+                        <input type='text'
+                            value={this.state.diagnosisInput}
+                            onChange={(e) => this.handleChange(e, 'diagnosisInput')} />
+                        <span>Number of Visits a Week</span>
+                        <input type='text'
+                            value={this.state.numberOfVisitsInput}
+                            onChange={(e) => this.handleChange(e, 'numberOfVisitsInput')} />
+                        <span>Plan of Care</span>
+                        <input type='number'
+                            value={this.state.planOfCareInput}
+                            onChange={(e) => this.handleChange(e, 'planOfCareInput')} />
+                    </div>
+                    <div className='planButton'>
+                        <button onClick={this.previous}>Previous</button>
+                    <button onClick={this.goToSaveNote}>View Note</button>
+                    </div>
+                </div>
             </div>
         )
     }

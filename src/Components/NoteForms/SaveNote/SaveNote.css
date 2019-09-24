@@ -21,3 +21,35 @@
 .boxDisplay:nth-child(2n) {
     background: aquamarine;
 }
+
+.subjectiveTable select, .subjectiveTable input {
+    width: 100%;
+}
+
+.actionButtons{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%
+}
+
+.saveNoteBody{
+    display: flex;
+    justify-content: center;
+}
+
+.saveNoteWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%
+}
+
+.savenoteTitle{
+    display: flex;
+    justify-content: center;
+}
+
+.soapWrapper{
+    display: flex;
+    justify-content: space-evenly;
+}

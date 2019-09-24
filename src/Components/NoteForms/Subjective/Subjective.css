@@ -1,3 +1,33 @@
-.subjectiveTable select, .subjectiveTable input {
-    width: 100%;
+* {
+    box-sizing: border-box;
+}
+
+.subjectiveBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subjectiveWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.subjectiveTitle{
+    font-size: 2rem; 
+    display: flex;
+    justify-content: center;
+}
+
+.subjectiveInput{
+    font-size: 2rem;
+}
+
+
+
+.subjectiveButtons{
+    display: flex;
+    justify-content: space-evenly;
 }
