@@ -1,24 +1,26 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import store from '../../redux/store';
+import { connect } from 'react-redux';
 import { subjectiveUpdateAction } from '../../redux/reducer';
+import './Subjective.css';
 
-export default class Subjective extends Component {
+class Subjective extends Component {
+
+    initialState = {
+        painInput: 0,
+        moodInput: '',
+        orientationInput: '',
+        additionalInfoInput: ''
+    }
+
     constructor() {
         super()
 
-        this.state = {
-            painInput: 0,
-            moodInput: '',
-            orientationInput: '',
-            additionalInfoInput: ''
-        };
-        store.subscribe(() => this.setState({ pid: store.getState().choosenPt}));
+        this.state = this.initialState;
     };
 
     componentDidMount() {
-        this.setState({ pid: store.getState().choosenPt });
-    };
+        this.setState(this.props.subjective);
+    }
 
     handleChange = (e, key) => {
         this.setState({
@@ -26,55 +28,81 @@ export default class Subjective extends Component {
         });
     };
 
-    submit = () => {
-        console.log('submitting Subjective');
-        console.log('');
-        const subjective = this.state
-        console.log('subjective: ', subjective);
-        console.log('');
-        store.dispatch(subjectiveUpdateAction(subjective));
+    goToObjective = () => {
+        console.log('submitting Subjective\n');
+        console.log('subjective: ', this.state);
+
+        this.props.subjectiveUpdateAction(this.state);
         this.props.history.push('/webnote/objective');
+    };
+
+    previous = () => {
+        this.props.history.push('/webnote/billing');
     };
 
     render() {
         return (
             <div>
                 <h1>Subjective</h1>
-                <span>Pain: </span>
-                <select onChange={(e) => this.handleChange(e, 'painInput')}>
-                    <option></option>
-                    <option>0</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                </select>
-                <span>Mood: </span>
-                <input type='text'
-                    onChange={(e) => this.handleChange(e, 'moodInput')}
-                />
-                <span>Orientation: </span>
-                <select onChange={(e) => this.handleChange(e, 'orientationInput')}>
-                    <option></option>
-                    <option>Time</option>
-                    <option>Place</option>
-                    <option>Person</option>
-                    <option>All</option>
-                    <option>None</option>
-                </select>
-                <span>Additional information: </span>
-                <input type='text'
-                    onChange={(e) => this.handleChange(e, 'additionalInfoInput')}
-                />
-                <button onClick={this.submit}>Objective</button>
-                <button>Cancel</button>
+                <table className="subjectiveTable">
+                    <tr>
+                        <td><span>Pain: </span></td>
+                        <td>
+                            <select onChange={(e) => this.handleChange(e, 'painInput')}>
+                                <option selected={this.state.painInput === 0}>0</option>
+                                <option selected={this.state.painInput === 1}>1</option>
+                                <option selected={this.state.painInput === 2}>2</option>
+                                <option selected={this.state.painInput === 3}>3</option>
+                                <option selected={this.state.painInput === 4}>4</option>
+                                <option selected={this.state.painInput === 5}>5</option>
+                                <option selected={this.state.painInput === 6}>6</option>
+                                <option selected={this.state.painInput === 7}>7</option>
+                                <option selected={this.state.painInput === 8}>8</option>
+                                <option selected={this.state.painInput === 9}>9</option>
+                                <option selected={this.state.painInput === 10}>10</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Mood: </span></td>
+                        <td>
+                            <input type='text' value={this.state.moodInput} onChange={(e) => this.handleChange(e, 'moodInput')} />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Orientation: </span></td>
+                        <td>
+                            <select onChange={(e) => this.handleChange(e, 'orientationInput')}>
+                                <option></option>
+                                <option selected={this.state.orientationInput === 'Time'}>Time</option>
+                                <option selected={this.state.orientationInput === 'Place'}>Place</option>
+                                <option selected={this.state.orientationInput === 'Person'}>Person</option>
+                                <option selected={this.state.orientationInput === 'All'}>All</option>
+                                <option selected={this.state.orientationInput === 'None'}>None</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span>Additional information: </span></td>
+                        <td>
+                            <input type='text' value={this.state.additionalInfoInput} onChange={(e) => this.handleChange(e, 'additionalInfoInput')} />
+                        </td>
+                    </tr>
+                </table>
+                <button onClick={this.goToObjective}>Objective</button>
+                <button onClick={this.previous}>Previous</button>
             </div>
         )
     };
 };
+
+const mapStateToProps = (reduxState) => {
+    const { subjective } = reduxState;
+    return { subjective };
+}
+
+const mapDispatchToProps = {
+    subjectiveUpdateAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Subjective);

@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
 import { store } from '../../redux/store';
 import { patientUpdateAction } from '../../redux/reducer';
 
+import './ChoosePatient.css';
+
 class ChoosePatient extends Component {
     constructor() {
         super()
-        
+
         this.state = {
             patients: [],
             choosenPt: ''
@@ -23,7 +24,15 @@ class ChoosePatient extends Component {
             this.setState({
                 patients: res.data
             });
-        }).catch(err => alert('Not connecting to DB', err));
+        }).catch(err =>
+            {
+                console.log('Not connected to DB', err);
+                if(err.response.status === 401) {
+                    this.props.history.push('/auth/login')
+                } else {
+                    alert('Something went wrong!\n ', err.response.data);
+                }
+            });
     };
 
     cancel = () => {
@@ -32,35 +41,49 @@ class ChoosePatient extends Component {
         });
     };
 
-    handleChange (e, key) {
+    handleChange(e, key) {
         this.setState({
             [key]: e.target.value
         })
     }
 
     billing = () => {
-        // needs to change state to the selected patient option. 
-      
         store.dispatch(patientUpdateAction(this.state));
         this.props.history.push('/webnote/billing');
     }
 
+    // addPatient = () => {
+    //     const { choosenPt } = this.state;
+    //     axios.post('/api/patients', { choosenPt }).then(res => {
+    //     }).catch(err => alert('Unable to Connect to DataBase'));
+    //     store.dispatch(patientUpdateAction(this.state));
+    //     this.props.history.push('/webnote/billing');
+
+    // }
+
     render() {
         return (
-            <div>
+            <div className='choosePatientBody'>
                 <h1>Choose Patient ID</h1>
-                <select onChange={(e) => this.handleChange(e, 'choosenPt')}>
-                    <option></option>
-                    {this.state.patients.map(el => {
-                        return (
-                            <option key={el.pt_id} value={el.pt_id}>
-                                {el.pt_code}
-                            </option>
-                        )
-                    })}
-                </select>
-                <button onClick={this.billing}>Billing</button>
-                <button onClick={this.cancel}>Cancel</button>
+                <div className='choosePatientSelect'>
+                    <select onChange={(e) => this.handleChange(e, 'choosenPt')}>
+                        <option></option>
+                        {this.state.patients.map(el => {
+                            return (
+                                <option key={el.pt_id} value={el.pt_id}>
+                                    {el.pt_code}
+                                </option>
+                            )
+                        })}
+                    </select>
+                </div>
+                {/* <span>Add Patient</span>
+                <input type='text' onChange={(e) => this.handleChange(e, 'choosenPt')} />
+                <button onClick={this.addPatient}>Add Patient</button> */}
+                <div className='choosePatientButtons'>
+                    <button onClick={this.billing}>Billing</button>
+                    <button onClick={this.cancel}>Cancel</button>
+                </div>
             </div>
         )
     }

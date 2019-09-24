@@ -53,7 +53,9 @@ class Register extends Component {
     render() {
         return (
             <div className='registerBody'>
-                <h1>Register</h1>
+                <div className='registerLogo'>
+                    <h1>Register</h1>
+                </div>
                 <div className='registerInputs'>
                     <span>Username: <input type='text' onChange={(e) => { this.handleChange(e, 'username') }} /></span>
                     <span>Email: <input type='text' onChange={(e) => { this.handleChange(e, 'email') }} /></span>

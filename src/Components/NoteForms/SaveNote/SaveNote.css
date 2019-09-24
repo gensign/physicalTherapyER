@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+.soapWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+.boxDisplay {
+    background: aliceblue;
+    min-width: 24%;
+    min-height: 250px;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #eee;
+}
+
+.boxDisplay:nth-child(2n) {
+    background: aquamarine;
+}

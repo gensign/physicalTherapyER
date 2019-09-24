@@ -3,7 +3,7 @@
 }
 
 .homePage {
-    border: 1px solid red;     
+    background: white;
 }
 
 img {
@@ -12,13 +12,34 @@ img {
     height: 100%;
 }
 
+.images img {
+    width: 60%
+}
+
 .images {
-    border: 1px solid green;
-    width: 70%;
+    width: 100%;
+    text-align: center;
+    background: #333;
+}
+
+.textBox {
+    background-image: linear-gradient(to bottom right, red, yellow);
+    height: 100%;
+    width: 60%;
+    padding-top: 5%;
+    justify-content: center;
 }
 
 .textBoxes {
-    border: 1px solid blue;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: rgb(104, 104, 104);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-
+/* body{
+    background: black;
+} */

@@ -12,7 +12,10 @@ const getBilling = async (req, res) => {
     console.log('billing');
     console.log('');
     const db = req.app.get('db');
-    const billing = await db.get_bill();
+    const {pid, id} = req.params;
+    console.log('id: ', id);
+    console.log('');
+    const billing = await db.get_bill([pid, id]);
     console.log('Billing: ', billing);
     console.log('');
     res.status(200).send('billing');

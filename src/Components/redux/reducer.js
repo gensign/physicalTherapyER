@@ -3,10 +3,10 @@ const initialState = {
     username: '',
     authenticated: false,
     choosenPt: 0,
-    subjective: '',
-    objective: '',
-    assessement: '',
-    plan: ''
+    subjective: {},
+    objective: {},
+    assessment: {},
+    plan: {}
 };
 
 // Action types
@@ -17,6 +17,7 @@ const UPDATE_SUBJECTIVE = 'UPDATE_SUBJECTIVE';
 const UPDATE_OBJECTIVE = 'UPDATE_OBJECTIVE';
 const UPDATE_ASSESSMENT = 'UPDATE_ASSESSMENT';
 const UPDATE_PLAN = 'UPDATE_PLAN';
+const RESET_ALL = 'RESET_ALL';
 
 // Action Builders
 export function userUpdateAction(state) {
@@ -54,10 +55,10 @@ export function objectiveUpdateAction(objective) {
     };
 };
 
-export function assessmentUpdateAction(assessement) {
+export function assessmentUpdateAction(assessment) {
     return {
         type: UPDATE_ASSESSMENT,
-        payload: assessement
+        payload: assessment
     };
 };
 
@@ -67,6 +68,13 @@ export function planUpdateAction(plan) {
         payload: plan
     };
 };
+
+export function resetAllAction() {
+    return {
+        type: RESET_ALL
+    };
+};
+
 // Reducer function
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -80,17 +88,19 @@ export default function reducer(state = initialState, action) {
             const { choosenPt } = action.payload;
             return { ...state, choosenPt };
         case UPDATE_SUBJECTIVE:
-            const { subjective } = action.payload;
+            const subjective = action.payload;
             return { ...state, subjective };
         case UPDATE_OBJECTIVE:
-            const { objective } = action.payload;
+            const objective = action.payload;
             return { ...state, objective };
         case UPDATE_ASSESSMENT:
-            const { assessement } = action.payload;
-            return { ...state, assessement };
+            const assessment = action.payload;
+            return { ...state, assessment };
         case UPDATE_PLAN:
-            const { plan } = action.payload;
+            const plan = action.payload;
             return { ...state, plan };
+        case RESET_ALL:
+            return initialState;
         default:
             return state
     };

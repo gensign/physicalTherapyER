@@ -11,6 +11,8 @@ const authCtrl = require('./Controllers/authController');
 const patientCtrl = require('./Controllers/patientsController');
 const noteCtrl = require('./Controllers/notesController');
 const billingCtrl = require('./Controllers/billingController');
+const stripeCtrl = require('./Controllers/stripeController');
+const nodeMailCtrl = require('./Controllers/nodemailer');
 
 // import .env 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
@@ -41,6 +43,7 @@ app.post('/auth/login', authCtrl.login);
 app.post('/auth/register', authCtrl.register);
 app.delete('/auth/logout', authCtrl.logout);
 app.put('/auth/update/:id', authCtrl.updateUserName);
+// app.get('/auth/user/:id', authCtrl.getUser);
 
 // auth guard for api routes
 app.use((req, res, next)=> {
@@ -62,7 +65,7 @@ app.delete('/api/patients/:id', patientCtrl.deletept);
 
 // billing endpoints
 app.get('/cptcodes', billingCtrl.getCPTCodes);
-app.get('/patient/:pid/billing', billingCtrl.getBilling);
+app.get('/patient/:pid/billing/:id', billingCtrl.getBilling);
 app.post('/patient/:pid/billing', billingCtrl.addBilling);
 
 // note endpoints
@@ -71,6 +74,14 @@ app.get('/patient/:pid/note/:id', noteCtrl.getSingleNote);
 app.post('/patient/:pid/note', noteCtrl.addNote);
 app.put('/patient/:pid/note/:id', noteCtrl.updateNote);
 app.delete('/patient/:pid/note/:id', noteCtrl.deleteNote);
+
+
+// Stribe Back end
+app.post('/api/payment', stripeCtrl.pay)
+
+// nodemailer Endpoints
+app.post('/api/email', nodeMailCtrl.email)
+
 
 // goal endpoints when able 
 

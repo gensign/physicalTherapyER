@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom';
 // import authenication components
 import Login from './Components/Authenication/Login/Login';
 import Register from './Components/Authenication/Register/Register';
+import UpdateUser from './Components/Authenication/UpdateUser/UpdateUser';
 
 // import HomePage
 import HomePage from './Components/HomePage/HomePage'
@@ -31,6 +32,7 @@ export default (
         <Route exact path='/' component={HomePage} />
         <Route path='/auth/login' component={Login} />
         <Route path='/auth/register' component={Register} />
+        <Route path='/auth/update' component={UpdateUser} />
         <Route path='/contact' component={Contact} />
         <Route path='/subscribe' component={Subscribe} />
         <Route path='/webnote/choose' component={ChoosePatient} />

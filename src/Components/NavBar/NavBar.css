@@ -3,7 +3,7 @@
 }
 
 .navBarBody{
-    border: 1px solid purple;
+    background: lightgrey;
     display: flex;
 }
 
@@ -17,4 +17,9 @@ li {
     list-style: none;
     margin: 0 1rem;
     transition: .3s;
+}
+
+li:hover {
+    color: blue;
+    cursor: pointer;  
 }

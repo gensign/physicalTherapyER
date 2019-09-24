@@ -1,38 +1,52 @@
-'use strict';
-const nodemailer = require('nodemailer');
+//import nodemailer
+const nodemailer = require('nodemailer')
 
-// async..await is not allowed in global scope, must use a wrapper
-async function main() {
-    // Generate test SMTP service account from ethereal.email
-    // Only needed if you don't have a real mail account for testing
-    let testAccount = await nodemailer.createTestAccount();
+//import environment variables for your email
+const { EMAIL, PASSWORD } = process.env
 
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        secure: false, // true for 465, false for other ports
+module.exports = {
+  email: async (req, res) => {
+    const { name, message, email, title, image } = req.body
+
+    try {
+      //invoke the createTransport function passing in your email information. 
+      let transporter = nodemailer.createTransport({
+        service: 'gmail',
         auth: {
-            user: testAccount.user, // generated ethereal user
-            pass: testAccount.pass // generated ethereal password
+          user: EMAIL,
+          pass: PASSWORD
         }
-    });
+      });
 
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-        from: '"Fred Foo 👻" <foo@example.com>', // sender address
-        to: 'gwenthrow@gmail.com', // list of receivers
-        subject: '', // Subject line
-        text: '', // plain text body
-        html: '<b>Hello world?</b>' // html body
-    });
-
-    console.log('Message sent: %s', info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-
-    // Preview only available when sending through an Ethereal account
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+      //invoke the sendMail function with the info in the email
+      let info = await transporter.sendMail({
+        from: `'${name}' <${email}>`, //This will show up when you go into the email
+        to: EMAIL,
+        subject: title, //This will show on the subject of the email
+        text: message, //for clients with plaintext support only
+        html: `<div>${message}<div> 
+              <img src="cid:unique@nodemailer.com"/>`,
+        attachments: [
+          { //this is the attachment of the document
+            filename: 'license.txt',
+            path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE'
+          },
+          { //this is the embedded image
+            cid: 'unique@nodemailer.com', //same cid value as in the html img src
+            path:image
+          }
+        ]
+      }, (err, res) => {
+        if (err) {
+          console.log('err', err)
+        } else {
+          console.log('res', res)
+          res.status(200).send(info)
+        }
+      })
+    } catch (err) {
+      console.log(err)
+      res.sendStatus(500)
+    }
+  }
 }
-
-main().catch(console.error);

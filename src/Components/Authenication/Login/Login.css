@@ -3,7 +3,7 @@
 }
 
 .loginBody{
-    border: 1px solid red;
+    background: lightblue;
     height: 70vh;
     width: 100vw;
     display: flex;
@@ -13,8 +13,19 @@
     font-size: 2rem;
 }
 
+.loginLogo {
+    background: lightgreen;
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 .loginInputs {
-    border: 1px solid green;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 25px;
+    background: white;
     width: 60vw;
     display: flex;
     flex-direction: column;
@@ -23,12 +34,22 @@
     font-size: 2rem;
 }
 
+.loginWrapper {
+    box-shadow: 6px 6px 8px #888888;
+    border-radius: 6px;
+}
+
 .loginButtons {
-    border: 1px solid blue;
     width: 60vw;
     display: flex;
     flex-direction: row-reverse;
     justify-content: space-evenly;
     margin-top: 5vh;
+}
+
+.loginButtons button {
+    padding: 25px;
+    font-size: 32px;
+    min-width: 250px;
 }
 

@@ -58,12 +58,16 @@ class Login extends Component {
     render() {
         return (
             <div className='loginBody'>
-                <h1>Login</h1>
-                <div className='loginInputs'>
-                    <span>Username: </span>
-                    <input type='text' onChange={(e) => this.handleChange(e, 'username')} />
-                    <span>Password: </span>
-                    <input type='password' onChange={(e) => this.handleChange(e, 'password')} />
+                <div className='loginWrapper'>
+                    <div className='loginLogo'>
+                        <h1>Login</h1>
+                    </div>
+                    <div className='loginInputs'>
+                        <span>Username: </span>
+                        <input type='text' onChange={(e) => this.handleChange(e, 'username')} />
+                        <span>Password: </span>
+                        <input type='password' onChange={(e) => this.handleChange(e, 'password')} />
+                    </div>
                 </div>
                 <div className='loginButtons'>
                     <button onClick={this.login}>Login</button>

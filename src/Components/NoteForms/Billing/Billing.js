@@ -47,6 +47,15 @@ export default class Billing extends Component {
         }).catch(err => alert('Unable to send data to DataBase'));
     };
 
+    cancel = () => {
+        this.setState({
+            cptCodes: [],
+            toggle: false,
+            choosenCPT: '',
+            units: 0
+        });
+        this.props.history.push('/webnote/choose');
+    }
     render() {
         return (
             <div>
@@ -82,7 +91,7 @@ export default class Billing extends Component {
                         <option>6</option>
                     </select>
                     <button onClick={this.subjective}>Subjective</button>
-                    <button>Cancel</button>
+                    <button onClick={this.cancel}>Cancel</button>
                 </div>
             </div>
         )

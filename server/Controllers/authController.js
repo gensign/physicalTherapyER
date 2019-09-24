@@ -79,6 +79,19 @@ const updateUserName = async (req, res) => {
     res.status(200).send(updateUser);
 };
 
+// const getUser = async (req, res) => {
+//     console.log('Getting User Info');
+//     console.log('');
+//     const db = req.app.get('db');
+//     const { id } = req.params;
+//     console.log('id: ', id);
+//     console.log('');
+//     const getUser = await db.find_user([id]);
+//     console.log('user: ', getUser);
+//     console.log('');
+//     res.status(200).send(getUser);
+// }
+
 module.exports = {
     login,
     register,

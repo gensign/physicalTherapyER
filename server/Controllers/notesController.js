@@ -29,7 +29,7 @@ const addNote = async (req, res) => {
     const { subjective, objective, assessment, plan } = req.body;
     console.log('subjective: ', subjective);
     console.log('');
-    const addNote = await db.create_note([subjective, objective, assessment, plan]);
+    const addNote = await db.create_note([pid, subjective, objective, assessment, plan]);
     console.log('Add Note: ', addNote);
     console.log('');
     res.status(200).send(addNote);

@@ -13,17 +13,20 @@ class NavBar extends Component {
         super();
 
         this.state = {
-            authenticated: false
+            authenticated: false,
         };
 
         store.subscribe(() => this.setState(store.getState()))
     };
 
-
+    toggle = () => {
+        this.setState({
+            toggle: true
+        })
+    }
     logout = () => {
         axios.delete('/auth/logout').then(res => {
             store.dispatch(userAuthAction({ authenticated: false }))
-            this.props.history.push('/');
         }).catch(err => console.log('logout not working', err));
     };
 
@@ -59,7 +62,12 @@ class NavBar extends Component {
                                 </Link>
                             </div>) :
                             (<div>
-                                <li onClick={this.logout}>Logout</li>
+                                <Link to='/auth/update'>
+                                    <li>Update User Information</li>
+                                </Link>
+                                <Link to='/'>
+                                    <li onClick={this.logout}>Logout</li>
+                                </Link>
                             </div>)
 
                         }
