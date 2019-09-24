@@ -16,7 +16,7 @@ const nodeMailCtrl = require('./Controllers/nodemailer');
 
 // import .env 
 const { SERVER_PORT, CONNECTION_STRING, SESSION_SECRET } = process.env;
-const PORT = SERVER_PORT || 1337;
+const PORT = SERVER_PORT;
 
 // middleware
 app.use(express.json());
