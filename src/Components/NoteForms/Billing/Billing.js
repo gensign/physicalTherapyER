@@ -90,8 +90,8 @@ export default class Billing extends Component {
                         <option>5</option>
                         <option>6</option>
                     </select>
-                    <button onClick={this.subjective}>Subjective</button>
                     <button onClick={this.cancel}>Cancel</button>
+                    <button onClick={this.subjective}>Subjective</button>
                 </div>
             </div>
         )

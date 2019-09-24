@@ -20,6 +20,7 @@ const PORT = SERVER_PORT;
 
 // middleware
 app.use(express.json());
+app.use( express.static( `${__dirname}/../build` ) );
 
 // sessions
 app.use(session({
